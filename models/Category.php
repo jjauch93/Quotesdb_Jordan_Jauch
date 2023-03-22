@@ -81,7 +81,7 @@
         }
 
         // Update category
-        public function create() {
+        public function update() {
             // Update category query
             $query = 'UPDATE {$this->table}
                     SET category = :category
