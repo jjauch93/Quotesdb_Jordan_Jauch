@@ -1,4 +1,4 @@
-<? php
+<?php
     class Databse {
         private $conn;
         private $host;
@@ -10,6 +10,7 @@
         public function __construct() {
             $this->username = getenv('USERNAME');
             $this->password = getenv('PASSWORD');
+            $this->dbname = getenv('DBNAME');
             $this->host = getenv('HOST');
             $this->port = getenv('PORT');
         }
