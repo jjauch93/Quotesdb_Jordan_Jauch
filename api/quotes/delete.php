@@ -6,8 +6,8 @@
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type,
     Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
-    include_once '../../config/Database.php';
-    include_once '../../models/Quote.php';
+    require '../../config/Database.php';
+    require '../../models/Quote.php';
 
     // Instantiate database and connect
     $database = new Database();

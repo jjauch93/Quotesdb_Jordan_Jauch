@@ -1,11 +1,11 @@
 <?php
-    class Databse {
-        private $conn;
+    class Database {
         private $host;
         private $port;
         private $dbname;
         private $username;
         private $password;
+        private $conn;
 
         public function __construct() {
             $this->username = getenv('USERNAME');
@@ -14,18 +14,18 @@
             $this->host = getenv('HOST');
             $this->port = getenv('PORT');
         }
-
-        public function connect() {
-            if($this->conn)
-                // If connection already exists, return it
+         
+        //DB connect for Render
+         public function connect () {
+             if ($this->conn) {
                 return $this->conn;
-            else {
+             } else {
                 $dsn = "pgsql:host={$this->host};port={$this->port};dbname={$this->dbname};";
-            
-                try{
+
+                try {
                     $this->conn = new PDO($dsn, $this->username, $this->password);
                     $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                    return $this->conn;
+                    return $this->conn;  
                 } catch(PDOException $e) {
                     echo 'Connection Error: ' . $e->getMessage();
                 }
