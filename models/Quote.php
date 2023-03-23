@@ -17,11 +17,11 @@
 
         // Get quote
         public function read() {
-            $query = 'SELECT q.id, q.quote, a.author, c.category
+            $query = "SELECT q.id, q.quote, a.author, c.category
                     FROM {$this->table} q
                     LEFT JOIN authors a ON a.id = q.author_id
                     LEFT JOIN categories c ON c.id = q.category_id
-                    ORDER BY q.id';
+                    ORDER BY q.id";
             
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -35,12 +35,12 @@
         // Get single quote
         public function read_single() {
             if(isset($_GET['id'])) {
-                $query = 'SELECT q.id, q.quote, a.author, c.category
+                $query = "SELECT q.id, q.quote, a.author, c.category
                         FROM {$this->table} q
                         LEFT JOIN authors a ON a.id = q.author_id
                         LEFT JOIN categories c ON c.id = q.category_id
                         WHERE q.id = :id
-                        LIMIT 0, 1';
+                        LIMIT 0, 1";
 
                 // Prepare statement
                 $stmt = $this->conn->prepare($query);
@@ -49,12 +49,12 @@
                 $stmt->bindParam(':id', $this->id);
 
             } else if(isset($_GET['author_id']) && isset($_GET['category_id'])) {
-                $query = 'SELECT q.id, q.quote, a.author, c.category
+                $query = "SELECT q.id, q.quote, a.author, c.category
                         FROM {$this->table} q
                         LEFT JOIN authors a ON a.id = q.author_id
                         LEFT JOIN categories c ON c.id = q.category_id
                         WHERE q.author_id = :author_id AND q.category_id = :category_id
-                        LIMIT 0, 1';
+                        LIMIT 0, 1";
                         
                 // Prepare statement
                 $stmt = $this->conn->prepare($query);
@@ -64,12 +64,12 @@
                 $stmt->bindParam(':category_id', $this->category_id);
 
             } else if(isset($_GET['author_id'])) {
-                $query = 'SELECT q.id, q.quote, a.author, c.category
+                $query = "SELECT q.id, q.quote, a.author, c.category
                         FROM {$this->table} q
                         LEFT JOIN authors a ON a.id = q.author_id
                         LEFT JOIN categories c ON c.id = q.category_id
                         WHERE q.author_id = :author_id
-                        LIMIT 0, 1';
+                        LIMIT 0, 1";
                         
                 // Prepare statement
                 $stmt = $this->conn->prepare($query);
@@ -78,12 +78,12 @@
                 $stmt->bindParam(':author_id', $this->author_id);
 
             } else if(isset($_GET['category_id'])) {
-                $query = 'SELECT q.id, q.quote, a.author, c.category
+                $query = "SELECT q.id, q.quote, a.author, c.category
                         FROM {$this->table} q
                         LEFT JOIN authors a ON a.id = q.author_id
                         LEFT JOIN categories c ON c.id = q.category_id
                         WHERE q.category_id = :category_id
-                        LIMIT 0, 1';
+                        LIMIT 0, 1";
                         
                 // Prepare statement
                 $stmt = $this->conn->prepare($query);
@@ -102,8 +102,8 @@
         public function create() {
             // Query if author_id exists
             $query = "SELECT quote
-                            FROM {$this->table} 
-                            WHERE author_id = :author_id";
+                    FROM {$this->table} 
+                    WHERE author_id = :author_id";
         
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -121,8 +121,8 @@
 
             // Query if category_id exists
             $query = "SELECT quote
-                            FROM {$this->table} 
-                            WHERE category_id = :category_id";
+                    FROM {$this->table} 
+                    WHERE category_id = :category_id";
             // Prepare statement
             $stmt = $this->conn->prepare($query);
 
@@ -137,10 +137,10 @@
                 //}
             }
 
-            $query = 'INSERT INTO {$this->table}
+            $query = "INSERT INTO {$this->table}
                     SET quote = :quote,
                         author_id = :author_id,
-                        category_id = :category_id';
+                        category_id = :category_id";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -169,8 +169,8 @@
         public function update() {
             // Query if quote_id exists
             $query = "SELECT quote
-                            FROM {$this->table} 
-                            WHERE quote_id = :quote_id";
+                    FROM {$this->table} 
+                    WHERE quote_id = :quote_id";
         
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -188,8 +188,8 @@
 
             // Query if author_id exists
             $query = "SELECT quote
-                            FROM {$this->table} 
-                            WHERE author_id = :author_id";
+                    FROM {$this->table} 
+                    WHERE author_id = :author_id";
         
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -207,8 +207,8 @@
 
             // Query if category_id exists
             $query = "SELECT quote
-                            FROM {$this->table} 
-                            WHERE category_id = :category_id";
+                    FROM {$this->table} 
+                    WHERE category_id = :category_id";
             // Prepare statement
             $stmt = $this->conn->prepare($query);
 
@@ -223,11 +223,11 @@
                 //}
             }
 
-            $query = 'UPDATE {$this->table}
+            $query = "UPDATE {$this->table}
                     SET quote = :quote,
                         author_id = :author_id,
                         category_id = :category_id
-                    WHERE id = :id';
+                    WHERE id = :id";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -257,8 +257,8 @@
         // Delete quote
         public function delete() {
             // Delete query
-            $query = 'DELETE FROM {$this->table}
-                    WHERE id = :id';
+            $query = "DELETE FROM {$this->table}
+                    WHERE id = :id";
             // Prepare statement
             $stmt = $this->conn->prepare($query);
         

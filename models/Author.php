@@ -32,10 +32,10 @@
         // Get single author
         public function read_single() {
             // Select query for single author
-            $query = 'SELECT id, author
+            $query = "SELECT id, author
                     FROM {$this->table}
                     WHERE id = ?
-                    LIMIT 0, 1';
+                    LIMIT 0, 1";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -56,8 +56,8 @@
         // Create author
         public function create() {
             // Create author query
-            $query = 'INSERT INTO {$this->table}
-                    SET author = :author';
+            $query = "INSERT INTO {$this->table}
+                    SET author = :author";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -82,9 +82,9 @@
 
         // Update author
         public function update() {
-            $query = 'UPDATE {$this->table}
+            $query = "UPDATE {$this->table}
                     SET author = :author
-                    WHERE id = :id';
+                    WHERE id = :id";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -110,8 +110,8 @@
         // Delete author
         public function delete() {
             // Delete query
-            $query = 'DELETE FROM {$this->table}
-                    WHERE id = :id';
+            $query = "DELETE FROM {$this->table}
+                    WHERE id = :id";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);

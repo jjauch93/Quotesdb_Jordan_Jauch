@@ -16,9 +16,9 @@
         // Get category
         public function read() {
             // Select categories query
-            $query = 'SELECT id, category
+            $query = "SELECT id, category
                     FROM {$this->table}
-                    ORDER BY id';
+                    ORDER BY id";
             
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -32,10 +32,10 @@
         // Get single category
         public function read_single() {
             // Select query for a single category
-            $query = 'SELECT id, category
+            $query = "SELECT id, category
                     FROM {$this->table}
                     WHERE id = ?
-                    LIMIT 0, 1';
+                    LIMIT 0, 1";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -56,8 +56,8 @@
         // Create category
         public function create() {
             // Create category query
-            $query = 'INSERT INTO {$this->table}
-                    SET category = :category';
+            $query = "INSERT INTO {$this->table}
+                    SET category = :category";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -81,9 +81,9 @@
         // Update category
         public function update() {
             // Update category query
-            $query = 'UPDATE {$this->table}
+            $query = "UPDATE {$this->table}
                     SET category = :category
-                    WHERE id = :id';
+                    WHERE id = :id";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);
@@ -109,8 +109,8 @@
         // Delete category
         public function delete() {
             // Delete query
-            $query = 'DELETE FROM {$this->table}
-                    WHERE id = :id';
+            $query = "DELETE FROM {$this->table}
+                    WHERE id = :id";
             // Prepare statement
             $stmt = $this->conn->prepare($query);
 
