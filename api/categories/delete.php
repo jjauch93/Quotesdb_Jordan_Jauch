@@ -20,7 +20,7 @@
     $data = json_decode(file_get_contents("php://input"));
 
     // Makes sure category DELETE submission contains id
-    if(!property_exists($data, 'id')) {
+    if(!isset($data->id)) {
         echo json_encode(array('message' => 'Missing Required Parameters'));
         return;
     }
@@ -29,7 +29,7 @@
 
     // Delete category
     if($category->delete())
-        echo json_encode(array('id' => $category->id));
+        echo json_encode(array("id" => $category->id));
     else
         echo json_encode(array('message' => 'category_id Not Found'));
 ?>

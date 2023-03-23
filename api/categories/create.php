@@ -20,12 +20,12 @@
     $data = json_decode(file_get_contents("php://input"));
 
     // Makes sure category POST submission contains category
-    if(property_exists($data, 'category')) {
+    if(isset($data->category)) {
         $category->category = $data->category;
 
         // Create category
         $category->create();
-        echo json_encode(array('id' => $db->lastInsertId(), 'category' => $category->category));
+        echo json_encode(array("id" => $db->lastInsertId(), "category" => $category->category));
     } else
         echo json_encode(array('message' => 'Missing Required Parameters'));
 ?>

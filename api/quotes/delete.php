@@ -20,7 +20,7 @@
     $data = json_decode(file_get_contents("php://input"));
 
     // Makes sure quote DELETE submission contains id
-    if(!property_exists($data, 'id')) {
+    if(!isset($data->id)) {
         echo json_encode(array('message' => 'Missing Required Parameters'));
         return;
     }

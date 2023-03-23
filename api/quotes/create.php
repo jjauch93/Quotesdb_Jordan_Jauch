@@ -20,7 +20,7 @@
     $data = json_decode(file_get_contents("php://input"));
 
     // Makes sure quote POST submission contains quote, author_id and category_id
-    if(property_exists($data, 'quote') && property_exists($data, 'author_id') && property_exists($data, 'category_id')) {
+    if(isset($data->quote) && isset($data->author_id) && isset($data->category_id)) {
         $quote->quote = $data->quote;
         $quote->author_id = $data->author_id;
         $quote->category_id = $data->category_id;

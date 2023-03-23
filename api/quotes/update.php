@@ -20,7 +20,7 @@
     $data = json_decode(file_get_contents("php://input"));
 
     // Makes sure quote PUT submission contains quote, id, author_id and category_id
-    if(!property_exists($data, 'quote') || !property_exists($data, 'id') || !property_exists($data, 'author_id') || !property_exists($data, 'category_id')) {
+    if(!isset($data->quote) || !isset($data->id) || !isset($data->author_id) || !isset($data->category_id)) {
         echo json_encode(array('message' => 'Missing Required Parameters'));
         return;
     }
