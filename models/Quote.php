@@ -1,5 +1,5 @@
 <?php
-    class Quotes {
+    class Quote {
         // Variables for database
         private $conn;
         private $table = 'quotes';
