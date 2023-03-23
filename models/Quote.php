@@ -67,47 +67,61 @@
                     exit();
                 }
 
-            } else{ 
-                if(isset($_GET['author_id']) && isset($_GET['category_id'])) {
-                    $query = "SELECT q.id, q.quote, a.author, c.category
-                            FROM {$this->table} q
-                            LEFT JOIN authors a ON a.id = q.author_id
-                            LEFT JOIN categories c ON c.id = q.category_id
-                            WHERE q.author_id = :author_id AND q.category_id = :category_id";
+            } else if(isset($_GET['author_id']) && isset($_GET['category_id'])) {
+                $query = "SELECT q.id, q.quote, a.author, c.category
+                        FROM {$this->table} q
+                        LEFT JOIN authors a ON a.id = q.author_id
+                        LEFT JOIN categories c ON c.id = q.category_id
+                        WHERE q.author_id = :author_id AND q.category_id = :category_id";
                             
-                    // Prepare statement
-                    $stmt = $this->conn->prepare($query);
+                // Prepare statement
+                $stmt = $this->conn->prepare($query);
 
-                    // Bind author_id and category_id
-                    $stmt->bindParam(':author_id', $this->author_id);
-                    $stmt->bindParam(':category_id', $this->category_id);
+                // Bind author_id and category_id
+                $stmt->bindParam(':author_id', $this->author_id);
+                $stmt->bindParam(':category_id', $this->category_id);
 
-                } else if(isset($_GET['author_id'])) {
-                    $query = "SELECT q.id, q.quote, a.author, c.category
-                            FROM {$this->table} q
-                            LEFT JOIN authors a ON a.id = q.author_id
-                            LEFT JOIN categories c ON c.id = q.category_id
-                            WHERE q.author_id = :author_id";
-                            
-                    // Prepare statement
-                    $stmt = $this->conn->prepare($query);
-
-                    // Bind author_id
-                    $stmt->bindParam(':author_id', $this->author_id);
-
-                } else if(isset($_GET['category_id'])) {
-                    $query = "SELECT q.id, q.quote, a.author, c.category
-                            FROM {$this->table} q
-                            LEFT JOIN authors a ON a.id = q.author_id
-                            LEFT JOIN categories c ON c.id = q.category_id
-                            WHERE q.category_id = :category_id";
-                            
-                    // Prepare statement
-                    $stmt = $this->conn->prepare($query);
-
-                    // Bind category_id
-                    $stmt->bindParam(':category_id', $this->category_id);
+                // Execute query
+                if($stmt->execute())
+                    return $stmt;
+                else {
+                    echo json_encode(array('message' => 'No Quotes Found'));
+                    exit();
                 }
+
+            } else if(isset($_GET['author_id'])) {
+                $query = "SELECT q.id, q.quote, a.author, c.category
+                        FROM {$this->table} q
+                        LEFT JOIN authors a ON a.id = q.author_id
+                        LEFT JOIN categories c ON c.id = q.category_id
+                        WHERE q.author_id = :author_id";
+                            
+                // Prepare statement
+                $stmt = $this->conn->prepare($query);
+
+                // Bind author_id
+                $stmt->bindParam(':author_id', $this->author_id);
+
+                // Execute query
+                if($stmt->execute())
+                    return $stmt;
+                else {
+                    echo json_encode(array('message' => 'No Quotes Found'));
+                    exit();
+                }
+
+            } else if(isset($_GET['category_id'])) {
+                $query = "SELECT q.id, q.quote, a.author, c.category
+                        FROM {$this->table} q
+                        LEFT JOIN authors a ON a.id = q.author_id
+                        LEFT JOIN categories c ON c.id = q.category_id
+                        WHERE q.category_id = :category_id";
+                            
+                // Prepare statement
+                $stmt = $this->conn->prepare($query);
+
+                // Bind category_id
+                $stmt->bindParam(':category_id', $this->category_id);
 
                 // Execute query
                 if($stmt->execute())
