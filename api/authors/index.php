@@ -9,24 +9,23 @@
         exit();
     }
 
-    switch ($method) {
-        case 'PUT':
-            require 'update.php';  
-            break;
-        case 'POST':
-            require 'create.php'; 
-            break;
-        case 'DELETE':
-            require 'delete.php'; 
-            break;
-        case 'GET':
-            // Checks if id is set for a single author
-            if(isset($_GET['id']))
-                require 'read_single.php';
-            else
-                require 'read.php';
-            break;
-        default: 
-            echo 'ERROR';
+    $uri = $_SERVER['REQUEST_URI'];
+
+    if ($method === 'POST')
+        require('create.php');
+
+    else if ($method === 'PUT')
+        require('update.php');
+
+    else if ($method === 'DELETE')
+        require('delete.php');
+    
+    else if ($method === 'GET') {
+        // Checking url if id is set
+        if (parse_url($uri, PHP_URL_QUERY)){
+            require('read_single.php');
+        } else {
+            require('read.php');
+        }
     }
 ?>
