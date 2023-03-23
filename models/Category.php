@@ -34,8 +34,7 @@
             // Select query for a single category
             $query = "SELECT id, category
                     FROM {$this->table}
-                    WHERE id = ?
-                    LIMIT 0, 1";
+                    WHERE id = ?";
 
             // Prepare statement
             $stmt = $this->conn->prepare($query);

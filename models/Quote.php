@@ -39,8 +39,7 @@
                         FROM {$this->table} q
                         LEFT JOIN authors a ON a.id = q.author_id
                         LEFT JOIN categories c ON c.id = q.category_id
-                        WHERE q.id = :id
-                        LIMIT 0, 1";
+                        WHERE q.id = :id";
 
                 // Prepare statement
                 $stmt = $this->conn->prepare($query);
@@ -53,8 +52,7 @@
                         FROM {$this->table} q
                         LEFT JOIN authors a ON a.id = q.author_id
                         LEFT JOIN categories c ON c.id = q.category_id
-                        WHERE q.author_id = :author_id AND q.category_id = :category_id
-                        LIMIT 0, 1";
+                        WHERE q.author_id = :author_id AND q.category_id = :category_id";
                         
                 // Prepare statement
                 $stmt = $this->conn->prepare($query);
@@ -68,8 +66,7 @@
                         FROM {$this->table} q
                         LEFT JOIN authors a ON a.id = q.author_id
                         LEFT JOIN categories c ON c.id = q.category_id
-                        WHERE q.author_id = :author_id
-                        LIMIT 0, 1";
+                        WHERE q.author_id = :author_id";
                         
                 // Prepare statement
                 $stmt = $this->conn->prepare($query);
@@ -82,8 +79,7 @@
                         FROM {$this->table} q
                         LEFT JOIN authors a ON a.id = q.author_id
                         LEFT JOIN categories c ON c.id = q.category_id
-                        WHERE q.category_id = :category_id
-                        LIMIT 0, 1";
+                        WHERE q.category_id = :category_id";
                         
                 // Prepare statement
                 $stmt = $this->conn->prepare($query);
