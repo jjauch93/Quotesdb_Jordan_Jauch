@@ -48,11 +48,9 @@
 
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if(is_array($row)) {
+            if(is_array($row))
                 // Set properties
-                $this->id = $row['id'];
-                $this->author = $row['category'];
-            }
+                $this->category = $row['category'];
         }
 
         // Create category
