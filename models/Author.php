@@ -16,9 +16,9 @@
         // Get authors
         public function read() {
             // Select authors query
-            $query = 'SELECT id, author
+            $query = "SELECT id, author
                     FROM {$this->table}
-                    ORDER BY id';
+                    ORDER BY id";
             
             // Prepare statement
             $stmt = $this->conn->prepare($query);
