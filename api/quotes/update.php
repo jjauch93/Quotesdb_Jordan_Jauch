@@ -32,7 +32,7 @@
 
     // Update quote
     if($quote->update())
-        echo json_encode(array('id' => $quote->id, 'quote' => $quote->quote, 'author_id' => $quote->author_id, 'category_id' => $quote->category_id));
+        echo json_encode(array("id" => $quote->id, "quote" => $quote->quote, "author_id" => $quote->author_id, "category_id" => $quote->category_id));
     else
         echo json_encode(array('message' => 'Quote Not Found'));
 ?>
