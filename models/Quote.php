@@ -11,7 +11,7 @@
         public $category_id;
 
         // Constructor with database
-        public function __constructor($db) {
+        public function __construct($db) {
             $this->conn = $db;
         }
 
